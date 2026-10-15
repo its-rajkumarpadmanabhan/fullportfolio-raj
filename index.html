@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajkumar — Software Developer & Content Creator | Dual Portfolio</title>
+  <meta name="description" content="Official dual-persona portfolio of Rajkumar PR: Full-Stack Python Software Developer & AI Security Engineer + 90K Tech Content Creator & Visual Artist." />
+  <meta name="theme-color" content="#07090e" />
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/developer.css" />
+  <link rel="stylesheet" href="css/creator.css" />
+  <style>
+    /* Master Hub Styles */
+    .hub-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 7.5rem 2rem 4rem;
+      position: relative;
+      text-align: center;
+    }
+
+    .hub-title-wrap {
+      max-width: 900px;
+      margin-bottom: 3.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .hub-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.15rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+    }
+
+    .hub-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 5.8vw, 4.8rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+
+    .hub-headline .dual-gradient {
+      background: linear-gradient(90deg, #38bdf8 0%, #10b981 35%, #fb7185 70%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hub-sub {
+      font-size: 1.15rem;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Dual Persona Split Cards */
+    .dual-portals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    .portal-card {
+      position: relative;
+      border-radius: 26px;
+      padding: 3rem 2.5rem;
+      text-align: left;
+      text-decoration: none;
+      color: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .portal-card.dev-side {
+      background: radial-gradient(circle at top left, rgba(6, 182, 212, 0.15), transparent 70%), rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .portal-card.creator-side {
+      background: radial-gradient(circle at top right, rgba(251, 113, 133, 0.18), transparent 70%), rgba(28, 18, 36, 0.85);
+      border: 1px solid rgba(251, 113, 133, 0.35);
+    }
+
+    .portal-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .portal-card.dev-side:hover {
+      border-color: var(--dev-secondary);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(6, 182, 212, 0.35);
+    }
+
+    .portal-card.creator-side:hover {
+      border-color: var(--creator-primary);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(251, 113, 133, 0.35);
+    }
+
+    .portal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .portal-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .dev-side .portal-icon {
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      color: var(--dev-secondary);
+    }
+
+    .creator-side .portal-icon {
+      background: rgba(251, 113, 133, 0.15);
+      border: 1px solid rgba(251, 113, 133, 0.35);
+      color: var(--creator-primary);
+    }
+
+    .portal-badge {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+
+    .dev-side .portal-badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .creator-side .portal-badge {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .portal-title {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .portal-lead {
+      color: #cbd5e1;
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .portal-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .portal-highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+    }
+
+    .portal-highlight-item span.bullet {
+      font-weight: 800;
+    }
+
+    .dev-side span.bullet { color: var(--dev-secondary); }
+    .creator-side span.bullet { color: var(--creator-primary); }
+
+    .portal-cta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .dev-side .portal-cta-bar { color: var(--dev-secondary); }
+    .creator-side .portal-cta-bar { color: var(--creator-primary); }
+
+    /* Intersection Feature Section */
+    .intersection-section {
+      max-width: 1280px;
+      margin: 4rem auto 0;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .intersection-box {
+      background: rgba(18, 22, 34, 0.75);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 26px;
+      padding: 3.5rem;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .intersection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+      text-align: left;
+    }
+
+    .intersection-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+
+    .intersection-item h4 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .intersection-item p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 992px) {
+      .dual-portals-grid {
+        grid-template-columns: 1fr;
+      }
+      .intersection-grid {
+        grid-template-columns: 1fr;
+      }
+      .intersection-box {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Interconnected Matrix Canvas -->
+  <div class="canvas-bg-container">
+    <canvas id="neural-matrix-canvas"></canvas>
+  </div>
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+
+  <!-- Custom Pointer -->
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-follower"></div>
+  <div class="custom-cursor-crosshair">[PORTAL:ACTIVE]</div>
+
+  <!-- Global Top Navigation -->
+  <header class="site-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" title="Rajkumar Portfolio Portal">
+        <div class="brand-avatar">
+          <img src="assets/images/rajkumar_avatar.jpg" alt="Rajkumar" />
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">RAJKUMAR</span>
+          <span class="brand-tag">DUAL PORTFOLIO // CODE & CREATE</span>
+        </div>
+      </a>
+
+      <!-- Persona Switcher -->
+      <nav class="persona-switcher" aria-label="Direct Portals">
+        <a href="developer.html" class="persona-btn dev-btn">
+          <span>⚡</span> <span>Developer Page</span>
+        </a>
+        <a href="creator.html" class="persona-btn creator-btn">
+          <span>🎨</span> <span>Creator Page</span>
+        </a>
+      </nav>
+
+      <!-- Nav Actions (Both Resumes Quick Access) -->
+      <div class="nav-actions">
+        <a href="developer.html#contact" class="btn-nav-cta">
+          <span>⚡ Contact / Hire</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HUB HERO SECTION -->
+    <section class="hub-hero">
+      <div class="hub-title-wrap">
+        <div class="hub-tag">
+          <span>✦</span> <span>ONE ARCHITECT • TWO EXPRESSIONS</span>
+        </div>
+
+        <h1 class="hub-headline">
+          Engineering Scalable Code.<br />
+          <span class="dual-gradient">Igniting 90K+ Audiences.</span>
+        </h1>
+
+        <p class="hub-sub">
+          Welcome to the portfolio portal of <strong>Rajkumar</strong>. Discover the engineering discipline behind high-throughput Python back-ends, zero-egress AI, and cybersecurity—alongside the storytelling craft of a 90,000+ tech content creator.
+        </p>
+      </div>
+
+      <!-- DUAL PERSONA SPLIT PORTALS -->
+      <div class="dual-portals-grid">
+
+        <!-- Portal 1: Software Developer -->
+        <a href="developer.html" class="portal-card dev-side">
+          <div>
+            <div class="portal-header">
+              <div class="portal-icon">⚡</div>
+              <span class="portal-badge">FULL-STACK & AI SYSTEMS</span>
+            </div>
+
+            <h2 class="portal-title">Software Developer</h2>
+            <p class="portal-lead">
+              Python back-end engineer specialising in asynchronous microservices, zero-egress generative AI pipelines, SQL schema optimization, and penetration testing.
+            </p>
+
+            <div class="portal-highlights">
+              <div class="portal-highlight-item">
+                <span class="bullet">▹</span>
+                <span><strong>Security Operations Center:</strong> Real-time zero-egress LLM SOC</span>
+              </div>
+              <div class="portal-highlight-item">
+                <span class="bullet">▹</span>
+                <span><strong>Agentic RAG Assistant:</strong> LangChain, Groq Llama 3 & ChromaDB</span>
+              </div>
+              <div class="portal-highlight-item">
+                <span class="bullet">▹</span>
+                <span><strong>Real-Time Collaborative Suite:</strong> CRDTs, Yjs & WebSockets</span>
+              </div>
+              <div class="portal-highlight-item">
+                <span class="bullet">▹</span>
+                <span><strong>Penetration Testing:</strong> Certified Red-Team vulnerability auditor</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portal-cta-bar">
+            <span>Explore Developer Page & Architecture</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+        <!-- Portal 2: Content Creator -->
+        <a href="creator.html" class="portal-card creator-side">
+          <div>
+            <div class="portal-header">
+              <div class="portal-icon">🎨</div>
+              <span class="portal-badge">90,000+ AUDIENCE & DESIGN</span>
+            </div>
+
+            <h2 class="portal-title">Content Creator</h2>
+            <p class="portal-lead">
+              Tech content creator, personal blog writer, thumbnail designer, and 2D sketch artist transforming complex tech breakthroughs into viral, high-converting multimedia assets.
+            </p>
+
+            <div class="portal-highlights">
+              <div class="portal-highlight-item">
+                <span class="bullet">✦</span>
+                <span><strong>Instagram Community:</strong> 90,000+ organic tech followers</span>
+              </div>
+              <div class="portal-highlight-item">
+                <span class="bullet">✦</span>
+                <span><strong>High-Retention Video:</strong> 84% avg completion rate on tech reels</span>
+              </div>
+              <div class="portal-highlight-item">
+                <span class="bullet">✦</span>
+                <span><strong>Visual CTR Design:</strong> 12.4% avg click-through rate thumbnails</span>
+              </div>
+              <div class="portal-highlight-item">
+                <span class="bullet">✦</span>
+                <span><strong>2D Sketch & Art:</strong> Character design & digital concept illustration</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="portal-cta-bar">
+            <span>Explore Creator Studio & Showcase</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- INTERSECTION VALUE ADD -->
+      <div class="intersection-section">
+        <div class="intersection-box">
+          <span class="section-badge" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); color:#fff;">
+            The Intersection Advantage
+          </span>
+          <h3 style="font-family:var(--font-heading); font-size:2rem; font-weight:800; color:#fff; margin-top:0.75rem;">
+            Why Code + Communication Creates Outsized Value
+          </h3>
+          <p style="color:#94a3b8; max-width:700px; margin:0.5rem auto 0; font-size:1.05rem;">
+            Most developers struggle to explain their work to stakeholders, while most content creators don’t understand how code works under the hood. Rajkumar operates squarely at the crossroads.
+          </p>
+
+          <div class="intersection-grid">
+            <div class="intersection-item">
+              <div style="font-size:1.6rem; margin-bottom:0.75rem;">🧠</div>
+              <h4>Deep Technical Credibility</h4>
+              <p>Because I build production microservices and write Python code daily, every piece of content, tutorial, or system documentation is technically accurate and grounded in real-world reality.</p>
+            </div>
+
+            <div class="intersection-item">
+              <div style="font-size:1.6rem; margin-bottom:0.75rem;">📢</div>
+              <h4>10x Engineering Communication</h4>
+              <p>Translating software architecture for a 90,000+ audience sharpens team presentations, sprint demos, and technical alignment between engineering teams and non-technical executives.</p>
+            </div>
+
+            <div class="intersection-item">
+              <div style="font-size:1.6rem; margin-bottom:0.75rem;">🎯</div>
+              <h4>High-Converting Product Polish</h4>
+              <p>Every interface I architect is built with aesthetic intuition: responsive layout precision, captivating micro-animations, and conversion-focused user journeys.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUICK RESUME DOWNLOADS STRIP -->
+      <div style="margin-top: 4.5rem; text-align: center; position: relative; z-index: 10;">
+        <h4 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 1.25rem;">
+          Direct PDF Resume Downloads
+        </h4>
+        <div style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap;">
+          <a href="assets/resumes/Rajkumar_PR_Resume.pdf" download="Rajkumar_PR_Resume.pdf" class="btn btn-primary" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download Software Developer Resume (PDF)</span>
+          </a>
+
+          <a href="assets/resumes/Rajkumar_Content Creator.pdf" download="Rajkumar_Content_Creator_CV.pdf" class="btn" style="background: linear-gradient(135deg, #fb7185, #f59e0b); color: #1a060f; font-weight: 700;" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download Content Creator Media Kit (PDF)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIFIED CONTACT & RECRUITER DESK -->
+    <section class="section-container contact-section" id="contact" style="margin-top: 3rem;">
+      <div class="section-header">
+        <span class="section-badge">Fast-Track Inquiry</span>
+        <h2 class="section-title">Direct Contact Desk</h2>
+        <p class="section-subtitle">
+          Whether you’re hiring for a software engineering position or planning a brand collaboration, get in touch directly.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card-info">
+          <h3 style="font-family:var(--font-heading); font-size:1.5rem; font-weight:800; color:#fff; margin-bottom:0.5rem;">
+            Rajkumar
+          </h3>
+          <p style="color:#94a3b8; font-size:0.95rem; margin-bottom:2rem;">
+            Based in Kerala & Tamil Nadu, India. Available for full-time roles, contracts, and brand partnerships worldwide.
+          </p>
+
+          <div class="contact-method">
+            <div class="contact-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="contact-meta">
+              <h4>Direct Call / WhatsApp</h4>
+              <a href="tel:+917356489200">+91 73564 89200</a>
+            </div>
+            <button class="btn-copy-chip" data-copy="+917356489200">Copy</button>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-meta">
+              <h4>Software Dev Email</h4>
+              <a href="mailto:itsrajkumarpadmanabhan@gmail.com">itsrajkumarpadmanabhan@gmail.com</a>
+            </div>
+            <button class="btn-copy-chip" data-copy="itsrajkumarpadmanabhan@gmail.com">Copy</button>
+          </div>
+
+          <div class="contact-method">
+            <div class="contact-icon-box" style="color:var(--creator-primary); border-color:rgba(251,113,133,0.3);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-meta">
+              <h4>Content Creator Email</h4>
+              <a href="mailto:rajkumarpadmanabhan23@gmail.com">rajkumarpadmanabhan23@gmail.com</a>
+            </div>
+            <button class="btn-copy-chip" data-copy="rajkumarpadmanabhan23@gmail.com">Copy</button>
+          </div>
+
+          <div style="margin-top:2rem;">
+            <a href="https://wa.me/917356489200?text=Hi%20Rajkumar,%20I%20reviewed%20your%20dual%20portfolio%20and%20would%20love%20to%20connect." target="_blank" class="btn btn-cyber" style="width:100%; text-align:center;">
+              <span>💬 Open Direct WhatsApp Chat (+91 73564 89200)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Direct Message Form -->
+        <div class="contact-form-box">
+          <h3 style="font-family:var(--font-heading); font-size:1.5rem; font-weight:800; color:#fff; margin-bottom:0.5rem;">
+            Send Inquiry
+          </h3>
+          <p style="color:#94a3b8; font-size:0.95rem; margin-bottom:1.75rem;">
+            Choose your topic and launch an instant WhatsApp or email draft.
+          </p>
+
+          <form id="portfolio-contact-form">
+            <div class="form-group">
+              <label for="form-name">Your Name / Organization *</label>
+              <input type="text" id="form-name" class="form-control" placeholder="e.g. Talent Acquisition / Brand Lead" required />
+            </div>
+
+            <div class="form-group">
+              <label for="form-email">Your Email Address *</label>
+              <input type="email" id="form-email" class="form-control" placeholder="you@company.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="form-role">Category of Inquiry *</label>
+              <select id="form-role" class="form-control" style="background:#090d16; cursor:pointer;">
+                <option value="Software Developer Full-Time Hire">Software Developer Full-Time Hire</option>
+                <option value="Content Creator Brand Sponsorship">Content Creator Brand Sponsorship</option>
+                <option value="FastAPI / AI Pipeline Contract">FastAPI / AI Pipeline Contract</option>
+                <option value="YouTube / Tech Thumbnail Suite">YouTube / Tech Thumbnail Suite</option>
+                <option value="Application Security Assessment">Application Security Assessment</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message">Message *</label>
+              <textarea id="form-message" class="form-control" placeholder="Tell Rajkumar about your project or opportunity..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              <span>Transmit Message & Fast-Track WhatsApp</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>Rajkumar</h3>
+        <p>Software Developer (Python, AI, Security) & Content Creator (90K+ Instagram, Design, Visual Arts).</p>
+      </div>
+      <div class="footer-socials">
+        <a href="developer.html" class="footer-social-btn" title="Software Developer Page">⚡</a>
+        <a href="creator.html" class="footer-social-btn" title="Content Creator Page">🎨</a>
+        <a href="https://github.com/its-rajkumarpadmanabhan" target="_blank" class="footer-social-btn" title="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://wa.me/917356489200" target="_blank" class="footer-social-btn" title="WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Rajkumar. Engineered with Vanilla Web Technologies. All rights reserved.</span>
+      <div style="display:flex; gap:1.5rem;">
+        <a href="developer.html" style="color:var(--dev-secondary); text-decoration:none;">Developer Page</a>
+        <a href="creator.html" style="color:var(--creator-primary); text-decoration:none;">Creator Page</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox / Specs Modal -->
+  <div class="modal-backdrop" id="project-modal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+      <div id="modal-dynamic-content"></div>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/cursor.js"></script>
+  <script src="js/canvas-developer.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
