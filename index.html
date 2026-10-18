@@ -10,6 +10,7 @@
   <!-- Preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Cinzel:wght@500;700&display=swap" rel="stylesheet" />
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/common.css" />
@@ -51,19 +52,112 @@
     }
 
     .hub-headline {
-      font-family: var(--font-heading);
-      font-size: clamp(2.6rem, 5.8vw, 4.8rem);
-      font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -0.035em;
+      font-size: clamp(2.75rem, 6.2vw, 5.2rem);
+      line-height: 1.12;
       color: #fff;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.15em;
+    }
+
+    .hub-headline .mix-row {
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.35em;
+    }
+
+    /* Font Mix 1: "Welcome" — Luxury Editorial Serif Italic */
+    .hub-headline .mix-welcome {
+      font-family: var(--font-serif, 'Instrument Serif', Georgia, serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.15em;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      text-shadow: 0 0 35px rgba(255, 255, 255, 0.3), 0 0 70px rgba(56, 189, 248, 0.2);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.35s ease;
+      display: inline-block;
+      cursor: default;
+    }
+    .hub-headline .mix-welcome:hover {
+      transform: translateY(-2px) skewX(-3deg);
+      text-shadow: 0 0 45px rgba(251, 113, 133, 0.5), 0 0 80px rgba(255, 255, 255, 0.45);
+    }
+
+    /* Font Mix 2: "To My" — Minimalist Geometric Modern Sans */
+    .hub-headline .mix-tomy {
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-style: normal;
+      font-size: 0.82em;
+      letter-spacing: 0.05em;
+      color: #94a3b8;
+      display: inline-block;
+      vertical-align: baseline;
+      transition: color 0.3s ease;
+    }
+    .hub-headline:hover .mix-tomy {
+      color: #e2e8f0;
+    }
+
+    /* Font Mix 3: "Work" — Architectural Precision Geometric Sans */
+    .hub-headline .mix-work {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      display: inline-block;
+      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+      cursor: default;
+    }
+    .hub-headline .mix-work:hover {
+      transform: translateY(-2px);
+      color: #e0f2fe;
+      text-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+    }
+
+    /* Font Mix 4: "Space" — Radiant Dual-Gradient Ambient Display */
+    .hub-headline .mix-space {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #38bdf8 0%, #10b981 32%, #fb7185 68%, #f59e0b 100%);
+      background-size: 250% 250%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 28px rgba(56, 189, 248, 0.32));
+      animation: spaceGradientShift 8s ease-in-out infinite alternate;
+      display: inline-block;
+      cursor: default;
+      transition: filter 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hub-headline .mix-space:hover {
+      transform: translateY(-2px) scale(1.02);
+      filter: drop-shadow(0 0 38px rgba(251, 113, 133, 0.55)) drop-shadow(0 0 15px rgba(56, 189, 248, 0.45));
     }
 
     .hub-headline .dual-gradient {
-      background: linear-gradient(90deg, #38bdf8 0%, #10b981 35%, #fb7185 70%, #f59e0b 100%);
+      background: linear-gradient(135deg, #38bdf8 0%, #10b981 32%, #fb7185 68%, #f59e0b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes spaceGradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .hub-sub {
@@ -340,9 +434,15 @@
           <span>✦</span> <span>ONE ARCHITECT • TWO EXPRESSIONS</span>
         </div>
 
-        <h1 class="hub-headline">
-          Engineering Scalable Code.<br />
-          <span class="dual-gradient">Igniting 90K+ Audiences.</span>
+        <h1 class="hub-headline" aria-label="Welcome To My Work Space">
+          <span class="mix-row">
+            <span class="mix-welcome">Welcome</span>
+            <span class="mix-tomy">To My</span>
+          </span>
+          <span class="mix-row">
+            <span class="mix-work">Work</span>
+            <span class="mix-space dual-gradient">Space</span>
+          </span>
         </h1>
 
         <p class="hub-sub">
@@ -369,19 +469,19 @@
             <div class="portal-highlights">
               <div class="portal-highlight-item">
                 <span class="bullet">▹</span>
-                <span><strong>Security Operations Center:</strong> Real-time zero-egress LLM SOC</span>
+                <span><strong>AeroMind AI Intelligence:</strong> Multi-agent LangGraph system</span>
               </div>
               <div class="portal-highlight-item">
                 <span class="bullet">▹</span>
-                <span><strong>Agentic RAG Assistant:</strong> LangChain, Groq Llama 3 & ChromaDB</span>
+                <span><strong>Real-World APKs:</strong> Gost.APK (NearByte), Kryptic Vault &amp; Apps</span>
               </div>
               <div class="portal-highlight-item">
                 <span class="bullet">▹</span>
-                <span><strong>Real-Time Collaborative Suite:</strong> CRDTs, Yjs & WebSockets</span>
+                <span><strong>AI-Driven SOC Platform:</strong> Real-time zero-egress LLM threat triage</span>
               </div>
               <div class="portal-highlight-item">
                 <span class="bullet">▹</span>
-                <span><strong>Penetration Testing:</strong> Certified Red-Team vulnerability auditor</span>
+                <span><strong>Full-Stack &amp; Pentest:</strong> Python, Django, REST APIs &amp; Red-Team auditing</span>
               </div>
             </div>
           </div>
@@ -596,7 +696,7 @@
     <div class="footer-container">
       <div class="footer-brand">
         <h3>Rajkumar</h3>
-        <p>Software Developer (Python, AI, Security) & Content Creator (90K+ Instagram, Design, Visual Arts).</p>
+        <p>Software Developer & Content Creator</p>
       </div>
       <div class="footer-socials">
         <a href="developer.html" class="footer-social-btn" title="Software Developer Page">⚡</a>

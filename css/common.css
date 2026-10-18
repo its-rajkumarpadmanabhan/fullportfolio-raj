@@ -3,7 +3,7 @@
    Dual-Persona: Software Developer & Content Creator
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Cinzel:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Cinzel:wght@500;700&display=swap');
 
 :root {
   /* Developer Color Palette (Cyber / Precision / High-Tech) */
@@ -38,6 +38,7 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --font-serif: 'Instrument Serif', Georgia, serif;
 
   /* Glassmorphism & Transitions */
   --glass-blur: blur(16px);
@@ -54,11 +55,25 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure anchor jumps clear sticky top navbar */
+section,
+.section-container,
+.creator-hero,
+.dev-hero,
+[id] {
+  scroll-margin-top: 85px;
 }
 
 body {

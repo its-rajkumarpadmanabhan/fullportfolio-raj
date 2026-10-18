@@ -646,3 +646,1002 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   AUTHENTIC CONTENT CREATOR PORTFOLIO INTEGRATION
+   NLE Timeline, Film Viewfinder, Pinterest Works & Malayalam Showcase
+   ========================================================================== */
+
+/* Top Playhead Scrub Track */
+.playhead-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(251, 113, 133, 0.15);
+  z-index: 9999;
+}
+
+.playhead-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--creator-primary), var(--creator-secondary));
+  box-shadow: 0 0 10px var(--creator-primary);
+  transition: width 0.08s ease;
+}
+
+/* Timecode Display in Nav */
+.tc-readout {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--creator-primary);
+  background: rgba(251, 113, 133, 0.12);
+  border: 1px solid rgba(251, 113, 133, 0.3);
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Hero Film Viewfinder Frame with rajkumar.png */
+.hero-frame-container {
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #15111a;
+  border: 1px solid rgba(251, 113, 133, 0.3);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(251, 113, 133, 0.2);
+}
+
+.hero-frame-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-spring);
+}
+
+.hero-frame-container:hover img {
+  transform: scale(1.03);
+}
+
+.hero-frame-container .brackets {
+  position: absolute;
+  inset: 16px;
+  pointer-events: none;
+}
+
+.hero-frame-container .brackets span {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+.hero-frame-container .brackets .tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.hero-frame-container .brackets .tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.hero-frame-container .brackets .bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.hero-frame-container .brackets .br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.frame-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(244, 63, 94, 0.5);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.05em;
+}
+
+.frame-badge .dot {
+  width: 8px;
+  height: 8px;
+  background: #f43f5e;
+  border-radius: 50%;
+  animation: pulseBeacon 1.4s infinite;
+}
+
+.frame-scrub {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(13, 10, 16, 0.95) 100%);
+  padding: 24px 20px 16px;
+}
+
+.frame-scrub .bar {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.frame-scrub .bar i {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 42%;
+  background: var(--creator-primary);
+  box-shadow: 0 0 10px var(--creator-primary);
+}
+
+.frame-scrub .meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Audio Waveform */
+.waveform {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 36px;
+  margin: 1rem 0;
+}
+
+.waveform i {
+  width: 3px;
+  background: var(--creator-primary);
+  border-radius: 2px;
+  animation: wv 1.4s ease-in-out infinite;
+}
+
+@keyframes wv {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+/* NLE Life on the Timeline Section */
+.timeline-wrap {
+  background: var(--creator-bg-card);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--creator-border);
+  border-radius: 24px;
+  padding: 2.25rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  overflow-x: auto;
+}
+
+.tl-inner {
+  min-width: 680px;
+}
+
+.tl-ruler {
+  display: grid;
+  grid-template-columns: 80px repeat(11, 1fr);
+  gap: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--creator-text-muted);
+}
+
+.tl-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.tl-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #f1f5f9;
+  letter-spacing: 0.05em;
+}
+
+.tl-label b {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--creator-primary);
+  font-weight: 600;
+}
+
+.tl-track {
+  position: relative;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tl-track .clip {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 6px;
+  padding: 4px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #0d0a10;
+  font-weight: 700;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  cursor: default;
+}
+
+.tl-track .clip:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.tl-track .clip .t {
+  font-size: 0.82rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tl-track .clip .s {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  opacity: 0.85;
+}
+
+.clip.edu1 { background: #93c5fd; }
+.clip.edu2 { background: #67e8f9; }
+.clip.work { background: #fde047; }
+.clip.photo { background: #fed7aa; }
+.clip.sketch { background: #d8b4fe; }
+.clip.ai { background: #a5f3fc; }
+.clip.write { background: var(--creator-primary); color: #fff; }
+
+.tl-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.tl-legend .item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tl-legend .sw {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+/* Detail Cards Grid */
+.clip-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .clip-detail-grid { grid-template-columns: 1fr; }
+}
+
+.detail-card {
+  background: var(--creator-bg-card);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--creator-border);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  border-top: 4px solid var(--creator-secondary);
+  transition: all var(--transition-fast);
+}
+
+.detail-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--creator-border-glow);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.detail-card.write { border-top-color: var(--creator-primary); }
+
+.detail-card .dc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.detail-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.detail-card .range {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--creator-primary);
+}
+
+.detail-card p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Closed Captions Language Panel */
+.cc-panel {
+  background: var(--creator-bg-card);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--creator-border);
+  border-radius: 18px;
+  padding: 1.75rem 2rem;
+  max-width: 520px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cc-title {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--creator-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cc-title::before {
+  content: "CC";
+  background: var(--creator-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 800;
+}
+
+.cc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cc-row:last-child {
+  border-bottom: none;
+}
+
+.cc-row .lang {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.cc-row .code {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.cc-row .spk {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+/* ==========================================================================
+   WORK & PINTEREST MASONRY (44 WORKS + 13 MALAYALAM POSTERS)
+   ========================================================================== */
+
+.work-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 2rem 0 2.5rem;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none !important;
+}
+
+.filter-btn:hover {
+  border-color: var(--creator-primary);
+  color: #fff;
+  transform: translateY(-2px);
+  background: rgba(251, 113, 133, 0.12);
+}
+
+.filter-btn.active {
+  background: var(--creator-primary);
+  color: #fff;
+  border-color: var(--creator-primary);
+  box-shadow: 0 4px 18px rgba(251, 113, 133, 0.35);
+}
+
+.filter-btn .count {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+}
+
+.jump-pill-btn {
+  border-color: var(--creator-secondary);
+  color: var(--creator-secondary);
+  font-weight: 700;
+}
+.jump-pill-btn:hover {
+  background: var(--creator-secondary);
+  color: #0d0a10;
+  border-color: var(--creator-secondary);
+}
+
+/* Masonry Columns */
+.pinterest-grid {
+  column-count: 4;
+  column-gap: 22px;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .pinterest-grid { column-count: 3; column-gap: 18px; }
+}
+@media (max-width: 768px) {
+  .pinterest-grid { column-count: 2; column-gap: 14px; }
+}
+@media (max-width: 480px) {
+  .pinterest-grid { column-count: 1; column-gap: 0; }
+}
+
+.pin-card {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 22px;
+  border-radius: 18px; /* Curved corners */
+  overflow: hidden;
+  position: relative;
+  background: var(--creator-bg-card);
+  border: 1px solid rgba(251, 113, 133, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.2s ease;
+  cursor: pointer;
+  display: block;
+}
+
+.pin-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(251, 113, 133, 0.25);
+  border-color: var(--creator-primary);
+}
+
+.pin-img-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #191220;
+}
+
+.pin-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 18px;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pin-card:hover .pin-img {
+  transform: scale(1.035);
+}
+
+.pin-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(13, 10, 16, 0.2) 0%, rgba(13, 10, 16, 0.35) 45%, rgba(13, 10, 16, 0.92) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.pin-card:hover .pin-overlay {
+  opacity: 1;
+}
+
+.pin-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.pin-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.pin-badge.story { border-color: rgba(251, 113, 133, 0.5); color: #fb7185; }
+.pin-badge.yt { border-color: rgba(239, 68, 68, 0.5); color: #f87171; }
+.pin-badge.reel { border-color: rgba(56, 189, 248, 0.5); color: #38bdf8; }
+.pin-badge.cover { border-color: rgba(245, 158, 11, 0.5); color: #fbbf24; }
+
+.pin-zoom-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pin-zoom-btn:hover {
+  background: var(--creator-primary);
+  border-color: var(--creator-primary);
+  transform: scale(1.1);
+}
+
+.pin-center {
+  display: flex;
+  justify-content: center;
+}
+
+.pin-like-btn {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 6px 14px;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pin-like-btn:hover {
+  background: rgba(244, 63, 94, 0.2);
+  border-color: #f43f5e;
+  color: #f43f5e;
+}
+
+.pin-like-btn.liked {
+  background: #f43f5e;
+  border-color: #f43f5e;
+  color: #fff;
+}
+
+.pin-bottom .pin-title {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.pin-bottom .pin-sub {
+  font-size: 0.78rem;
+  color: var(--creator-text-muted);
+}
+
+/* ==========================================================================
+   MALAYALAM THUMBNAILS SUBSECTION
+   ========================================================================== */
+
+.malayalam-divider {
+  margin: 5rem 0 3.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.malayalam-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.4), transparent);
+}
+
+.malayalam-divider-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.4rem 1.4rem;
+  border-radius: 999px;
+  background: #15101a;
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--creator-secondary);
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
+}
+
+.malayalam-divider-badge .dot {
+  width: 8px;
+  height: 8px;
+  background: var(--creator-secondary);
+  border-radius: 50%;
+  animation: pulseBeacon 1.5s infinite;
+}
+
+.ml-tag-pill {
+  font-family: 'Manjari', sans-serif;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--creator-secondary);
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  font-weight: 700;
+}
+
+.region-pill {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pulse-indicator {
+  width: 7px;
+  height: 7px;
+  background: #38bdf8;
+  border-radius: 50%;
+  animation: pulseBeacon 1.8s infinite;
+}
+
+.ml-pin-card .pin-title {
+  font-family: 'Manjari', var(--font-sans);
+  letter-spacing: 0.01em;
+}
+
+.ml-badge {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  color: #fbbf24 !important;
+}
+
+/* ==========================================================================
+   LIGHTBOX MODAL FOR WORKS & THUMBNAILS
+   ========================================================================== */
+
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 5, 10, 0.94);
+  backdrop-filter: blur(20px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  padding: 2rem;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-container {
+  position: relative;
+  max-width: 900px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-image-wrap {
+  max-width: 100%;
+  max-height: 75vh;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(251, 113, 133, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  display: block;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -45px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--creator-primary);
+  transform: scale(1.15);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.lightbox-nav:hover {
+  background: var(--creator-primary);
+  border-color: var(--creator-primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-nav.prev { left: -70px; }
+.lightbox-nav.next { right: -70px; }
+
+@media (max-width: 900px) {
+  .lightbox-nav.prev { left: 10px; }
+  .lightbox-nav.next { right: 10px; }
+}
+
+.lightbox-footer {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #fff;
+  font-family: var(--font-sans);
+}
+
+.lightbox-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.lightbox-counter {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--creator-primary);
+  background: rgba(251, 113, 133, 0.15);
+  border: 1px solid rgba(251, 113, 133, 0.3);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+/* ========================================================
+   GALLERY SHOW MORE / SHOW LESS TOGGLE BUTTONS & GRIDS
+   ======================================================== */
+.gallery-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.75rem 0 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.btn-gallery-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.85rem;
+  background: rgba(18, 22, 36, 0.75);
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  border-radius: 999px;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.btn-gallery-toggle:hover {
+  background: rgba(251, 113, 133, 0.18);
+  border-color: var(--creator-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(251, 113, 133, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.btn-gallery-toggle:active {
+  transform: translateY(0);
+}
+
+.btn-gallery-toggle .btn-toggle-icon {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  stroke: var(--creator-primary);
+}
+
+.btn-gallery-toggle.is-expanded .btn-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.btn-gallery-toggle .badge-count {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: rgba(251, 113, 133, 0.2);
+  color: #fb7185;
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 0.25rem;
+}
+
+/* Card reveal animation */
+@keyframes pinCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.pin-card.pin-revealed {
+  animation: pinCardReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Art & Photography Grid Layouts */
+.art-masonry-grid,
+.photo-interactive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .art-masonry-grid,
+  .photo-interactive-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .art-masonry-grid,
+  .photo-interactive-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Card height and image fits for Art & Photo */
+.art-masonry-grid .pin-card,
+.photo-interactive-grid .pin-card {
+  break-inside: avoid;
+  margin-bottom: 0;
+}
+
+.art-masonry-grid .pin-img-wrap,
+.photo-interactive-grid .pin-img-wrap {
+  aspect-ratio: 4 / 3;
+  background: #0d0a10;
+}
+
+.art-masonry-grid .pin-img-wrap img,
+.photo-interactive-grid .pin-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-spring);
+}
+
+

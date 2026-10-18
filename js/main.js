@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForms();
   initAudioFeedback();
   initReelsPlayer();
+  initScrollSpy();
 });
 
 /* ==========================================================================
@@ -302,8 +303,8 @@ function initModals() {
   const modalCloseBtn = document.getElementById('modal-close-btn');
   const modalContent = document.getElementById('modal-dynamic-content');
 
-  // Open Project Details
-  document.querySelectorAll('.btn-project-detail').forEach((btn) => {
+  // Open Project Details (scoped to buttons with data-project)
+  document.querySelectorAll('.btn-project-detail[data-project]').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       const projKey = btn.getAttribute('data-project');
@@ -318,6 +319,10 @@ function initModals() {
               <h2 style="font-family:var(--font-heading); font-size:1.85rem; color:#fff; font-weight:800;">${data.title}</h2>
               <p style="color:var(--dev-secondary); font-weight:600; font-size:1rem; margin-top:0.25rem;">${data.subtitle}</p>
             </div>
+            <a href="https://github.com/its-rajkumarpadmanabhan" target="_blank" class="btn-project-detail" style="text-decoration:none;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              <span>GitHub Repository ↗</span>
+            </a>
           </div>
 
           <div style="width:100%; height:260px; border-radius:14px; overflow:hidden; margin-bottom:1.75rem; border:1px solid rgba(56,189,248,0.25);">
@@ -347,9 +352,14 @@ function initModals() {
             </ul>
           </div>
 
-          <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:12px; padding:1.25rem;">
-            <h4 style="color:#34d399; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem;">Engineering Impact</h4>
-            <p style="color:#f1f5f9; font-size:0.95rem; font-weight:500;">${data.impact}</p>
+          <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:12px; padding:1.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+            <div>
+              <h4 style="color:#34d399; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.35rem;">Engineering Impact</h4>
+              <p style="color:#f1f5f9; font-size:0.95rem; font-weight:500;">${data.impact}</p>
+            </div>
+            <a href="https://github.com/its-rajkumarpadmanabhan" target="_blank" class="btn-project-detail" style="text-decoration:none; background:rgba(16,185,129,0.2); border-color:#10b981; color:#fff;">
+              <span>Source on GitHub ↗</span>
+            </a>
           </div>
         </div>
       `;
@@ -457,4 +467,52 @@ function initContactForms() {
       form.reset();
     }, 400);
   });
+}
+
+/* ==========================================================================
+   SCROLL SPY & ACTIVE NAV LINK HIGHLIGHT
+   ========================================================================== */
+function initScrollSpy() {
+  const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+  if (!navLinks.length) return;
+
+  const sections = [];
+  navLinks.forEach((link) => {
+    const hash = link.getAttribute('href');
+    if (hash && hash.length > 1) {
+      const target = document.querySelector(hash);
+      if (target) {
+        sections.push({ el: target, link: link });
+      }
+    }
+  });
+
+  if (!sections.length) return;
+
+  function updateActiveLink() {
+    const scrollY = window.scrollY;
+    const offset = 140; // Navbar offset
+    let activeSection = sections[0];
+
+    for (let i = 0; i < sections.length; i++) {
+      const rect = sections[i].el.getBoundingClientRect();
+      const top = rect.top + scrollY;
+      if (scrollY >= top - offset) {
+        activeSection = sections[i];
+      }
+    }
+
+    if (window.innerHeight + scrollY >= document.documentElement.scrollHeight - 50) {
+      activeSection = sections[sections.length - 1];
+    }
+
+    sections.forEach((s) => s.link.classList.remove('active'));
+    if (activeSection && activeSection.link) {
+      activeSection.link.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+  window.addEventListener('resize', updateActiveLink, { passive: true });
+  updateActiveLink();
 }
